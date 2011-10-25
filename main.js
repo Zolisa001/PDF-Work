@@ -28,23 +28,40 @@ function saveStudent() {
 	return false;
 }
 
-function addNewStudent(form, studentRoster) {
-	validateStudentData(form);
+function addNewStudent(form) {
 
-	var student = {};
-	student.name = $(form).find('#name').val();
-	student.start = $(form).find('#start').val();
-	student.end = $(form).find('#end').val();
-	student.grade = $(form).find('#grade').val();
-	student.existence = true;
+	if ( studentDataIsValid(form) ) {
+		var student = {};
+		student.name = $(form).find('#name').val();
+		student.start = $(form).find('#start').val();
+		student.end = $(form).find('#end').val();
+		student.grade = $(form).find('#grade').val();
+		student.existence = true;
 
-	studentRoster.push(student);
+		studentRoster.push(student);
+
+	} else {
+		showValidationError(form);
+	}	
 }
 
 function editStudent() {
 	
 }
 
-validateStudentData(form) {
-	
+function studentDataIsValid(form) {
+	if (
+		$(form).find('#name')  == '' ||
+		$(form).find('#start') == '' ||
+		$(form).find('#end')   == '' ||
+		$(form).find('#grade') == ''
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function showValidationError(form) {
+
 }
