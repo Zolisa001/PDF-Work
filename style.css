@@ -143,6 +143,10 @@ body {
 			font-size: 0.8em;
 		}
 
+			fieldset.inline label input {
+				width: 8em;
+			}
+
 	input[type="submit"] {
 		float: right;
 	}
