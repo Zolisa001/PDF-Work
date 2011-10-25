@@ -34,6 +34,42 @@
 		
 	</div>
 
+	<div id="dialog">
+		<form id="student-form" action="add">
+			<div class="form-row">
+				<label for="name">Name:</label>
+			</div>
+
+			<div class="form-row">
+				<fieldset class="inline">
+					<!-- Use strong rather than legend because it is partially immune to styling through CSS -->
+					<strong class="label-appearance">Term:</strong>
+					<!-- Use HTML5's implicit label to field matching -->
+					<label>
+						Start Date
+						<input type="text" class="date" id="start" />
+					</label>
+
+					<label>
+						End Date
+						<input type="text" class="date" id="start" />
+					</label>
+				</fieldset>
+			</div>
+
+			<div class="form-row">
+				<label for="grade">Grade:</label>
+				<select id="grade" name="grade">
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+				</select>
+			</div>
+
+			<input type="submit" value="Add" />
+		</form>
+	</div>
+
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="jquery-ui-1.8.16.custom.min.js"></script>
