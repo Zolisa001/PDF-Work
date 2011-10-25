@@ -1,7 +1,9 @@
+var studentRoster = [];
+
 $(document).ready(function() {
 	$('#add').click(openAddDialog);
-
-	$('#dialog #submit').click(saveStudent);
+	
+	$('#student-form').submit(saveStudent);
 });
 
 function openAddDialog() {
@@ -12,23 +14,37 @@ function openAddDialog() {
 }
 
 function saveStudent() {
-	var form = $('#student-form');
+	var form = $(this);
 	var form_action = $(form).attr('action');
 
 	if (form_action == 'add') {
-		addNewStudent();
+		addNewStudent(form, studentRoster);
 	} else if (form_action == 'edit') {
-		editStudent();
+		editStudent(form, studentRoster);
 	}
 
 	$('#dialog').dialog('close');
-	$(form).preventDefault();
+
+	return false;
 }
 
-function addNewStudent() {
+function addNewStudent(form, studentRoster) {
+	validateStudentData(form);
+
 	var student = {};
+	student.name = $(form).find('#name').val();
+	student.start = $(form).find('#start').val();
+	student.end = $(form).find('#end').val();
+	student.grade = $(form).find('#grade').val();
+	student.existence = true;
+
+	studentRoster.push(student);
 }
 
-function saveStudent() {
+function editStudent() {
+	
+}
+
+validateStudentData(form) {
 	
 }
