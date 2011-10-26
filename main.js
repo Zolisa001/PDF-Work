@@ -31,6 +31,9 @@ function saveStudent() {
 function addNewStudent(form) {
 
 	if ( studentDataIsValid(form) ) {
+
+		removeValidationError(form);
+
 		var student = {};
 		student.name = $(form).find('#name').val();
 		student.start = $(form).find('#start').val();
@@ -38,7 +41,11 @@ function addNewStudent(form) {
 		student.grade = $(form).find('#grade').val();
 		student.existence = true;
 
-		studentRoster.push(student);
+		var studentID = studentRoster.push(student) - 1;
+
+		clearFields(form);
+
+		addStudentToTable(studentID);
 
 	} else {
 		showValidationError(form);
@@ -51,17 +58,34 @@ function editStudent() {
 
 function studentDataIsValid(form) {
 	if (
-		$(form).find('#name')  == '' ||
-		$(form).find('#start') == '' ||
-		$(form).find('#end')   == '' ||
-		$(form).find('#grade') == ''
+		$(form).find('#name').val()  == '' ||
+		$(form).find('#start').val() == '' ||
+		$(form).find('#end').val()   == '' ||
+		$(form).find('#grade').val() == ''
 	) {
-		return true;
-	} else {
 		return false;
+	} else {
+		return true;
 	}
 }
 
 function showValidationError(form) {
+	if ( $(form).children('.error').size() == 0 ) {
+		$(form).prepend('<div class="error">Please fill in all fields</div>');
+	}
+}
 
+function removeValidationError(form) {
+	$(form).children('.error').remove();
+}
+
+function clearFields(form) {
+	$(form).find('#name').val('');
+	$(form).find('#start').val('');
+	$(form).find('#end').val('');
+	$(form).find('#grade').val('9');
+}
+
+function addStudentToTable(studentID) {
+	
 }
