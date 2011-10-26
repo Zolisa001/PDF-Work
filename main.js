@@ -2,11 +2,25 @@ var studentRoster = [];
 
 $(document).ready(function() {
 	$('#add').click(openAddDialog);
+
 	$('#roster .view').live('click',openViewDialog);
 	$('#roster .edit').live('click',openEditDialog);
 	$('#roster .delete').live('click',deleteStudent);
 	
 	$('#student-form').submit(saveStudent);
+
+	var dates = $( "#start, #end" ).datepicker({
+		numberOfMonths: 3,
+		onSelect: function( selectedDate ) {
+			var option = this.id == "start" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" ),
+				date = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+			dates.not( this ).datepicker( "option", option, date );
+		}
+	});
 });
 
 function openAddDialog() {
