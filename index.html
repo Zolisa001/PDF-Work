@@ -74,7 +74,26 @@
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="jquery-ui-1.8.16.custom.min.js"></script>
+	<script src="jquery.expand.min.js"></script>
 	<script src="main.js"></script>
+	<script id="row-template" type="text/html">
+		<tr id="">
+			<td class="name"></td>
+			<td class="term">
+				<span class="start"></span>
+				-
+				<span class="end"></span>
+			</td>
+			<td class="grade"></td>
+			<td class="actions">
+				<a class="view" href="#">view</a>
+				|
+				<a class="edit" href="#">edit</a>
+				|
+				<a class="delete" href="#">delete</a>
+			</td>
+		</tr>
+	</script>
 </body>
 
 </html>

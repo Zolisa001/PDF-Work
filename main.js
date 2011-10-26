@@ -87,5 +87,15 @@ function clearFields(form) {
 }
 
 function addStudentToTable(studentID) {
-	
+	var student = studentRoster[studentID];
+
+	$('#row-template').expand({
+		'@id':   studentID,
+		'name':  student.name,
+		'term': {
+			'start': student.start,
+			'end':   student.end
+		},
+		'grade': student.grade
+	}).appendTo('#roster tbody');
 }
