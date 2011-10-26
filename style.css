@@ -220,3 +220,21 @@ input[type="submit"] {
 		background-color: #06C;
 		color: #fff;
 	}
+
+thead th {
+	color: #333;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+	thead th.name {
+		-moz-border-radius-topleft: 5px;
+		-webkit-border-radius: 5px 0px 0px 0px;
+		border-radius: 5px 0px 0px 0px;
+	}
+
+	thead th.actions {
+		-moz-border-radius-topright: 5px;
+		-webkit-border-radius: 0px 5px 0px 0px;
+		border-radius: 0px 5px 0px 0px;
+	}
