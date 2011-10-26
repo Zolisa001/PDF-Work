@@ -11,7 +11,7 @@ function openAddDialog() {
 	$('#dialog').dialog({
 		title: "Add Student",
 		width: 400
-	});
+	}).find('#student-form').attr('action', 'add');;
 }
 
 function openEditDialog() {
@@ -21,6 +21,7 @@ function openEditDialog() {
 	});
 
 	var rowID = $(this).parents('tr').attr('id');
+	console.log(rowID);
 	var student = studentRoster[rowID];
 
 	d.find('#student-form').attr('action', 'edit');
@@ -35,12 +36,13 @@ function saveStudent() {
 	var form = $(this);
 	var form_action = $(form).attr('action');
 
-	if (form_action == '') {
+	if (form_action == 'add') {
 		addNewStudent(form, studentRoster);
 	} else if (form_action == 'edit') {
 		updateStudent(form, studentRoster);
 	}
 
+	clearFields(form);
 	$('#dialog').dialog('close');
 
 	return false;
@@ -61,8 +63,6 @@ function addNewStudent(form) {
 
 		var studentID = studentRoster.push(student) - 1;
 
-		clearFields(form);
-
 		addStudentToTable(studentID);
 
 	} else {
@@ -70,8 +70,29 @@ function addNewStudent(form) {
 	}	
 }
 
-function updateStudent() {
-	
+function updateStudent(form) {
+	if ( studentDataIsValid(form) ) {
+
+		removeValidationError(form);
+
+		var student = {};
+		student.name = $(form).find('#name').val();
+		student.start = $(form).find('#start').val();
+		student.end = $(form).find('#end').val();
+		student.grade = $(form).find('#grade').val();
+		student.existence = true;
+
+		var studentID = $(form).find('#studentID').val();
+
+		console.log(student);
+		studentRoster[studentID] = student;
+		console.log(studentRoster[studentID]);
+
+		updateStudentRow(studentID);
+
+	} else {
+		showValidationError(form);
+	}	
 }
 
 function studentDataIsValid(form) {
@@ -117,4 +138,15 @@ function addStudentToTable(studentID) {
 		},
 		'grade': student.grade
 	}).appendTo('#roster tbody');
+}
+
+function updateStudentRow(studentID) {
+	console.log('Updating student row.');
+	var row = $('#' + studentID);
+	console.log(row);
+	student = studentRoster[studentID]
+	$(row).find('.name').text(student.name);
+	$(row).find('.start').text(student.start);
+	$(row).find('.end').text(student.end);
+	$(row).find('.grade').text(student.grade);
 }
