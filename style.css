@@ -141,10 +141,19 @@ body {
 			text-transform: uppercase;
 		}
 
+		.ie7 h1 {
+			letter-spacing: 0;
+			font-size: 3.5em;
+		}
+
 		#add {
 			bottom: 0;
 			position: absolute;
 			right: 0;
+		}
+
+		.ie7 #add {
+			bottom: 0.5em;
 		}
 
 			#add img {
@@ -155,10 +164,19 @@ body {
 	display: none;
 }
 
+	.ie7 #student-form {
+		width: 100%;
+		zoom: 1;
+	}
+
 	label,
 	.label-appearance {
 		color: #666;
 	}
+
+		.ie7 label input {
+			vertical-align: middle;
+		}
 
 	fieldset.inline {
 		display: inline;
