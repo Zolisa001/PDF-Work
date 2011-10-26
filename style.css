@@ -150,3 +150,15 @@ body {
 	input[type="submit"] {
 		float: right;
 	}
+
+#view-dialog {
+	display: none;
+}
+
+	dt {
+		color: #666;
+	}
+
+		dd dl {
+			margin-bottom:0;
+		}

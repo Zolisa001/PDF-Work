@@ -2,6 +2,7 @@ var studentRoster = [];
 
 $(document).ready(function() {
 	$('#add').click(openAddDialog);
+	$('#roster .view').live('click',openViewDialog);
 	$('#roster .edit').live('click',openEditDialog);
 	$('#roster .delete').live('click',deleteStudent);
 	
@@ -12,7 +13,7 @@ function openAddDialog() {
 	$('#dialog').dialog({
 		title: "Add Student",
 		width: 400
-	}).find('#student-form').attr('action', 'add');;
+	}).find('#student-form').attr('action', 'add');
 }
 
 function openEditDialog() {
@@ -22,7 +23,6 @@ function openEditDialog() {
 	});
 
 	var rowID = $(this).parents('tr').attr('id');
-	console.log(rowID);
 	var student = studentRoster[rowID];
 
 	d.find('#student-form').attr('action', 'edit');
@@ -85,9 +85,7 @@ function updateStudent(form) {
 
 		var studentID = $(form).find('#studentID').val();
 
-		console.log(student);
 		studentRoster[studentID] = student;
-		console.log(studentRoster[studentID]);
 
 		updateStudentRow(studentID);
 
@@ -142,10 +140,9 @@ function addStudentToTable(studentID) {
 }
 
 function updateStudentRow(studentID) {
-	console.log('Updating student row.');
 	var row = $('#' + studentID);
-	console.log(row);
 	student = studentRoster[studentID]
+
 	$(row).find('.name').text(student.name);
 	$(row).find('.start').text(student.start);
 	$(row).find('.end').text(student.end);
@@ -159,6 +156,24 @@ function deleteStudent() {
 	studentRoster[rowID].existence = false;
 
 	$('#' + rowID).remove();
+
+	return false;
+}
+
+function openViewDialog() {
+	console.log('started function');
+	var d = $('#view-dialog').dialog({
+		title: "View Student",
+		width: 400
+	});
+
+	var rowID = $(this).parents('tr').attr('id');
+	var student = studentRoster[rowID];
+
+	d.find('.name').text(student.name);
+	d.find('.start').text(student.start);
+	d.find('.end').text(student.end);
+	d.find('.grade').text(student.grade);
 
 	return false;
 }
