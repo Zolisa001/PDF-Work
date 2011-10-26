@@ -142,31 +142,9 @@ body {
 		}
 
 		#add {
-			background-color: #eee;
-			background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.5)), to(rgba(255,255,255,0))); /* Saf4+, Chrome */
-		  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* Chrome 10+, Saf5.1+, iOS 5+ */
-		  background-image:    -moz-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* FF3.6 */
-		  background-image:     -ms-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* IE10 */
-		  background-image:      -o-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* Opera 11.10+ */
-		  background-image:         linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0));
 			bottom: 0;
-			border: 1px solid #ccc;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			color: #06C;
-			cursor: pointer;
-			font-weight: bold;
-			padding-bottom: 0.5em;
-			padding-top: 0.5em;
 			position: absolute;
 			right: 0;
-		}
-
-		#add:hover {
-			border: 1px solid #06C;
-			background-color: #06C;
-			color: #fff;
 		}
 
 			#add img {
@@ -209,3 +187,31 @@ body {
 		dd dl {
 			margin-bottom:0;
 		}
+
+
+#add,
+input[type="submit"] {
+	background-color: #eee;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.5)), to(rgba(255,255,255,0))); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* IE10 */
+  background-image:      -o-linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0)); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, rgba(255,255,255,0.5), rgba(255,255,255,0));
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #06C;
+	cursor: pointer;
+	font-weight: bold;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+
+	#add:hover,
+	input[type="submit"]:hover {
+		border: 1px solid #06C;
+		background-color: #06C;
+		color: #fff;
+	}
