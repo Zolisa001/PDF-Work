@@ -3,6 +3,7 @@ var studentRoster = [];
 $(document).ready(function() {
 	$('#add').click(openAddDialog);
 	$('#roster .edit').live('click',openEditDialog);
+	$('#roster .delete').live('click',deleteStudent);
 	
 	$('#student-form').submit(saveStudent);
 });
@@ -149,4 +150,15 @@ function updateStudentRow(studentID) {
 	$(row).find('.start').text(student.start);
 	$(row).find('.end').text(student.end);
 	$(row).find('.grade').text(student.grade);
+}
+
+function deleteStudent() {
+	rowID = $(this).parents('tr').attr('id');
+
+	// Mark as deleted. For a "real" delete method, possibly replace with null?
+	studentRoster[rowID].existence = false;
+
+	$('#' + rowID).remove();
+
+	return false;
 }
