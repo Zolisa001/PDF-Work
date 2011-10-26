@@ -176,7 +176,6 @@ function deleteStudent() {
 }
 
 function openViewDialog() {
-	console.log('started function');
 	var d = $('#view-dialog').dialog({
 		title: "View Student",
 		width: 400
