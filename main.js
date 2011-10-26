@@ -27,7 +27,7 @@ function openAddDialog() {
 	$('#dialog').dialog({
 		title: "Add Student",
 		width: 400
-	}).find('#student-form').attr('action', 'add');
+	}).find('#student-form').attr('action', 'add').find('input[type="submit"]').val('Add');
 }
 
 function openEditDialog() {
@@ -45,6 +45,7 @@ function openEditDialog() {
 	d.find('#end').val(student.end);
 	d.find('#grade').val(student.grade);
 	d.find('#studentID').val(rowID);
+	d.find('input[type="submit"]').val('Save Edits')
 }
 
 function saveStudent() {
