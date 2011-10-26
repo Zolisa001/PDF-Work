@@ -2,6 +2,7 @@ var studentRoster = [];
 
 $(document).ready(function() {
 	$('#add').click(openAddDialog);
+	$('#roster .edit').live('click',openEditDialog);
 	
 	$('#student-form').submit(saveStudent);
 });
@@ -13,14 +14,31 @@ function openAddDialog() {
 	});
 }
 
+function openEditDialog() {
+	var d = $('#dialog').dialog({
+		title: "Edit Student",
+		width: 400
+	});
+
+	var rowID = $(this).parents('tr').attr('id');
+	var student = studentRoster[rowID];
+
+	d.find('#student-form').attr('action', 'edit');
+	d.find('#name').val(student.name);
+	d.find('#start').val(student.start);
+	d.find('#end').val(student.end);
+	d.find('#grade').val(student.grade);
+	d.find('#studentID').val(rowID);
+}
+
 function saveStudent() {
 	var form = $(this);
 	var form_action = $(form).attr('action');
 
-	if (form_action == 'add') {
+	if (form_action == '') {
 		addNewStudent(form, studentRoster);
 	} else if (form_action == 'edit') {
-		editStudent(form, studentRoster);
+		updateStudent(form, studentRoster);
 	}
 
 	$('#dialog').dialog('close');
@@ -52,7 +70,7 @@ function addNewStudent(form) {
 	}	
 }
 
-function editStudent() {
+function updateStudent() {
 	
 }
 
@@ -84,6 +102,7 @@ function clearFields(form) {
 	$(form).find('#start').val('');
 	$(form).find('#end').val('');
 	$(form).find('#grade').val('9');
+	$(form).find('#studentID').val('');
 }
 
 function addStudentToTable(studentID) {
